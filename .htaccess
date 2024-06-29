@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Si l'utilisateur accède à la racine du site
+RewriteCond %{REQUEST_URI} ^/BlogMVC/?$
+RewriteRule ^ index.php [L]
+
+# Si l'utilisateur n'est pas connecté, redirigez vers accueil.php
+RewriteCond %{REQUEST_URI} !^/BlogMVC/accueil.php$ [NC]
+RewriteCond %{REQUEST_URI} !^/BlogMVC/login.php$ [NC]
+RewriteCond %{REQUEST_URI} !^/BlogMVC/assets/ [NC]
+RewriteCond %{REQUEST_URI} !^/BlogMVC/views/ [NC]
+RewriteCond %{REQUEST_URI} !^/BlogMVC/controllers/ [NC]
+RewriteCond %{REQUEST_URI} !^/BlogMVC/models/ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{HTTP_COOKIE} !user_id
+RewriteRule ^ accueil.php [L,R=302]
