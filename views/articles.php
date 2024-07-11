@@ -15,6 +15,20 @@ if (isset($_POST['logout'])) {
     header('Location: accueil.php');
     exit;
 }
+
+// Définir le nombre d'articles par page
+$articlesPerPage = 5;
+
+// Obtenir le numéro de la page actuelle
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$start = ($page - 1) * $articlesPerPage;
+
+// Obtenir les articles pour la page actuelle
+$articles = array_slice($articles, $start, $articlesPerPage);
+
+// Calculer le nombre total de pages
+$totalArticles = count($articles); // Le total devrait venir du contrôleur
+$totalPages = ceil($totalArticles / $articlesPerPage);
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +88,32 @@ if (isset($_POST['logout'])) {
             overflow: auto;
             margin-bottom: 20px;
         }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            color: #007bff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .pagination .active {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+        }
     </style>
 </head>
 <body>
@@ -105,6 +145,20 @@ if (isset($_POST['logout'])) {
                     <p><?php echo substr($article['contenu'], 0, 100); ?>...</p>
                 </div>
             <?php endforeach; ?>
+
+            <div class="pagination">
+                <?php if ($page > 1): ?>
+                    <a href="?page=<?php echo $page - 1; ?>">&laquo; Précédent</a>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <a href="?page=<?php echo $i; ?>" class="<?php echo ($i == $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                <?php endfor; ?>
+
+                <?php if ($page < $totalPages): ?>
+                    <a href="?page=<?php echo $page + 1; ?>">Suivant &raquo;</a>
+                <?php endif; ?>
+            </div>
         <?php else: ?>
             <p>Aucun article trouvé.</p>
         <?php endif; ?>      
