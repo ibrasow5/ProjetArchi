@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="user-container">
         <h1>Ajouter Utilisateur</h1>
-        <a href="manage_users.php" class="button">Retour</a>
+        <a href="manage_users.php" class="button">Retour à l'arrière</a>
 
         <!-- Formulaire d'ajout d'utilisateur -->
         <form method="post">
