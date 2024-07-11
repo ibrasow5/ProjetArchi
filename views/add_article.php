@@ -138,6 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label for="categorie_id">Catégorie :</label>
                 <select id="categorie_id" name="categorie_id" required>
+                    <option value="">Sélectionner une catégorie</option>    
                     <option value="1">Sport</option>
                     <option value="2">Santé</option>
                     <option value="3">Éducation</option>

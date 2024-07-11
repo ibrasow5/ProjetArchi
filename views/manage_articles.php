@@ -143,8 +143,8 @@ if (isset($_POST['logout'])) {
                         <td><?php echo $article['titre']; ?></td>
                         <td><?php echo $article['categorie_libelle']; ?></td>
                         <td>
-                            <a href="edit_article.php?id=<?php echo $article['id']; ?>">Modifier</a>
-                            <a href="delete_article.php?id=<?php echo $article['id']; ?>">Supprimer</a>
+                            <a class="button" href="edit_article.php?id=<?php echo $article['id']; ?>">Modifier</a>
+                            <a class="button" href="delete_article.php?id=<?php echo $article['id']; ?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

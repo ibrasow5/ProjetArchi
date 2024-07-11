@@ -141,9 +141,9 @@ if (isset($_POST['logout'])) {
                         <td><?php echo $user['username']; ?></td>
                         <td><?php echo $user['role']; ?></td>
                         <td>
-                            <a href="edit_user.php?id=<?php echo $user['id']; ?>">Modifier</a>
-                            <a href="delete_user.php?id=<?php echo $user['id']; ?>">Supprimer</a>
-                            <a href="delete_token.php?id=<?php echo $user['id']; ?>">Supprimer Token</a>
+                            <a class="button" href="edit_user.php?id=<?php echo $user['id']; ?>">Modifier</a>
+                            <a class="button" href="delete_user.php?id=<?php echo $user['id']; ?>">Supprimer</a>
+                            <a class="button" href="delete_token.php?id=<?php echo $user['id']; ?>">Supprimer Token</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
