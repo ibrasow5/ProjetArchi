@@ -97,12 +97,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: red;
             margin-top: 10px;
         }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
 <body>
     <div class="article-container">
         <h1>Ajouter un Article</h1>
+        <a href="manage_articles.php" class="button">Retour à l'arrière</a>
         <form action="add_article.php" method="post">
             <div class="form-group">
                 <label for="titre">Titre :</label>

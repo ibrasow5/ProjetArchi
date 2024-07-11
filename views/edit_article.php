@@ -105,12 +105,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .form-group button:hover {
             background-color: #0056b3;
         }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <?php include __DIR__ . '/../views/header.php'; ?>
     <div class="article-container">
         <h1>Édition de l'article : <?php echo htmlspecialchars($article['titre']); ?></h1>
+        <a href="manage_articles.php" class="button">Retour à l'arrière</a>
         <form action="" method="POST">
             <input type="hidden" name="article_id" value="<?php echo $article['id']; ?>">
             <div class="form-group">
