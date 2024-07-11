@@ -17,7 +17,7 @@ if (isset($_POST['logout'])) {
 }
 
 // Définir le nombre d'articles par page
-$articlesPerPage = 5;
+$articlesPerPage = 10;
 
 // Obtenir le numéro de la page actuelle
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
