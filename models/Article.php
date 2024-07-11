@@ -14,7 +14,9 @@ class Article {
     }
 
     public function getAllArticles() {
-        $requete = "SELECT * FROM Article";
+        $requete = "SELECT a.*, c.libelle AS categorie_libelle 
+                    FROM Article a 
+                    JOIN Categorie c ON a.categorie = c.id";
         $statement = $this->connexion->query($requete);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -34,7 +36,7 @@ class Article {
             'titre' => $titre,
             'contenu' => $contenu
         ]);
-        // Retourne true si la mise à jour a réussi, false sinon
+        // Retourne true si la mise à jour a réussi
         return $statement->rowCount() > 0;
     }
 
@@ -58,4 +60,5 @@ class Article {
         return $statement->rowCount() > 0; // Retourne true si au moins une ligne a été affectée
     }
 }
+
 ?>

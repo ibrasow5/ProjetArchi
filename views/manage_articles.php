@@ -132,6 +132,7 @@ if (isset($_POST['logout'])) {
                 <tr>
                     <th>ID</th>
                     <th>Titre</th>
+                    <th>Catégorie</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -140,6 +141,7 @@ if (isset($_POST['logout'])) {
                     <tr>
                         <td><?php echo $article['id']; ?></td>
                         <td><?php echo $article['titre']; ?></td>
+                        <td><?php echo $article['categorie_libelle']; ?></td>
                         <td>
                             <a href="edit_article.php?id=<?php echo $article['id']; ?>">Modifier</a>
                             <a href="delete_article.php?id=<?php echo $article['id']; ?>">Supprimer</a>

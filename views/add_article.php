@@ -5,17 +5,15 @@ session_start();
 require_once __DIR__ . '/../config/connexion.php';
 require_once __DIR__ . '/../models/Article.php';
 
+// Création d'une instance de la classe Article
+$articleModel = new Article($connexion);
+
 // Vérification si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des données du formulaire
     $titre = $_POST['titre'] ?? '';
     $contenu = $_POST['contenu'] ?? '';
     $categorie_id = $_POST['categorie_id'] ?? '';
-
-    // Validation des données (à implémenter selon vos besoins)
-
-    // Création d'une instance de la classe Article
-    $articleModel = new Article($connexion);
 
     // Appel à la méthode addArticle pour ajouter l'article dans la base de données
     $nouvelArticleId = $articleModel->addArticle($titre, $contenu, $categorie_id);
@@ -67,6 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .form-group input[type="text"],
         .form-group textarea {
             width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group select{
+            width: 30%;
             padding: 8px;
             font-size: 14px;
             border: 1px solid #ccc;
@@ -130,7 +137,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="form-group">
                 <label for="categorie_id">Catégorie :</label>
-                <input type="text" id="categorie_id" name="categorie_id" required>
+                <select id="categorie_id" name="categorie_id" required>
+                    <option value="1">Sport</option>
+                    <option value="2">Santé</option>
+                    <option value="3">Éducation</option>
+                    <option value="4">Politique</option>
+                </select>
             </div>
             <div class="form-group">
                 <button type="submit" class="button">Ajouter l'article</button>
