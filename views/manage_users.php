@@ -10,6 +10,13 @@ $userController = new UserController($connexion);
 // Récupération de tous les utilisateurs 
 $userModel = new User($connexion);
 $users = $userModel->getAllUsers();
+
+// Gérer la déconnexion
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: ../accueil.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +57,13 @@ $users = $userModel->getAllUsers();
             text-align: center;
         }
 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -82,11 +96,31 @@ $users = $userModel->getAllUsers();
         .user-actions a:hover {
             background-color: #f0f0f0;
         }
+
+        .logout-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #dc3545; /* Rouge */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333; /* Rouge plus sombre au survol */
+        }
     </style>
 </head>
 <body>
     <div class="user-container">
-        <h1>Gestion des Utilisateurs</h1>
+        <div class="header">
+            <h1>Gestion des Utilisateurs</h1>
+            <form method="POST" style="display: inline;">
+                <button type="submit" name="logout" class="logout-button">Se déconnecter</button>
+            </form>
+        </div>
         <a href="../index.php" class="button">Retour à l'accueil</a>
         <a href="add_user.php" class="button">Ajouter un utilisateur</a>
 
